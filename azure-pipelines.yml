@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - 
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'CSA(b56055de-765c-4282-8022-3825b573162a)'
+    subscriptionId: 'b56055de-765c-4282-8022-3825b573162a'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'rakeshrmaasti-rg'
+    location: 'Canada East'
+    templateLocation: 'Linked artifact'
+    csmFile: 'C:\Users\Sharath\Desktop\arm.json'
+    deploymentMode: 'Incremental'
+    deploymentName: 'armdeploy'
